@@ -1,0 +1,23 @@
+// File: backend/blogCategories.jsw
+
+import { createCategory } from 'wix-blog-backend';
+
+// Function to add a new category
+export function addNewCategory(name, slug, description) {
+  return createCategory({
+    title: name,
+    slug: slug,
+    description: description,
+    visibility: 'public'
+  })
+  .then((category) => {
+    console.log("Category created successfully: ", category);
+    return category;
+  })
+  .catch((error) => {
+    console.error("Error creating category: ", error);
+    throw new Error(error);
+  });
+}
+
+// Example usage (you can call this function from another file or user action)

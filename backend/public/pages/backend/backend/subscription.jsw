@@ -1,0 +1,21 @@
+// File: backend/subscription.jsw
+
+import { insert } from 'wix-data';
+
+// Function to save subscription details to the database
+export function saveSubscription(email) {
+  return insert('Subscribers', {
+    email: email,
+    subscribedDate: new Date()
+  })
+  .then((item) => {
+    console.log("Subscription saved successfully: ", item);
+    return item;
+  })
+  .catch((error) => {
+    console.error("Error saving subscription: ", error);
+    throw new Error(error);
+  });
+}
+
+// Example usage (bind this to a submit button for the subscription form)

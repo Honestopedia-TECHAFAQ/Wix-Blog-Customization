@@ -1,0 +1,18 @@
+// File: backend/blogCategories.jsw
+
+import { updateCategory } from 'wix-blog-backend';
+
+// Function to update an existing category
+export function updateCategoryDetails(categoryId, updatedDetails) {
+  return updateCategory(categoryId, updatedDetails)
+    .then((updatedCategory) => {
+      console.log("Category updated successfully: ", updatedCategory);
+      return updatedCategory;
+    })
+    .catch((error) => {
+      console.error("Error updating category: ", error);
+      throw new Error(error);
+    });
+}
+
+// Example usage (you can call this function from another file or user action)

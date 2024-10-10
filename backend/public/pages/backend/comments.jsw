@@ -1,0 +1,22 @@
+// File: backend/comments.jsw
+
+import { insert } from 'wix-data';
+
+// Function to add a comment to a post
+export function addComment(postId, commentText) {
+  return insert('Comments', {
+    postId: postId,
+    commentText: commentText,
+    createdDate: new Date()
+  })
+  .then((comment) => {
+    console.log("Comment added successfully: ", comment);
+    return comment;
+  })
+  .catch((error) => {
+    console.error("Error adding comment: ", error);
+    throw new Error(error);
+  });
+}
+
+// Example usage (bind this to a submit button for a comment form)

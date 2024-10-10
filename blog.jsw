@@ -1,0 +1,17 @@
+// File: public/pages/blog.jsw
+
+// Import the necessary Wix modules
+import { $w } from 'wix-window';
+
+// Customize blog post title appearance on mouseover
+$w.onReady(() => {
+  $w("#blogPosts").onMouseIn((event) => {
+    let $item = $w.at(event.context);
+    $item("#title").style.color = "#ff0000"; // Change title color to red on hover
+  });
+
+  $w("#blogPosts").onMouseOut((event) => {
+    let $item = $w.at(event.context);
+    $item("#title").style.color = "#000000"; // Revert title color on mouse out
+  });
+});

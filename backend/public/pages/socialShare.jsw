@@ -1,0 +1,21 @@
+// File: public/pages/socialShare.jsw
+
+import { social } from 'wix-social';
+
+// Function to share blog post on Facebook
+export function shareOnFacebook(postUrl) {
+  social.share({
+    network: 'facebook',
+    url: postUrl,
+    title: 'Check out this blog post!'
+  })
+  .then(() => {
+    console.log("Post shared on Facebook successfully");
+  })
+  .catch((error) => {
+    console.error("Error sharing on Facebook: ", error);
+    throw new Error(error);
+  });
+}
+
+// Example usage (you can bind this to a button click or other user action)
